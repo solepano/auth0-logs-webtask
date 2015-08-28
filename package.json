@@ -1,0 +1,30 @@
+{
+  "name": "auth0-logs-webtask",
+  "version": "1.0.0",
+  "description": "Webtask script for pulling logs from Auth0 API and pushing them to 3rd party logging API.",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/solepano/auth0-logs-webtask.git"
+  },
+  "keywords": [
+    "auth0",
+    "logs",
+    "loggly",
+    "webtask"
+  ],
+  "author": "Soledad Pano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/solepano/auth0-logs-webtask/issues"
+  },
+  "homepage": "https://github.com/solepano/auth0-logs-webtask",
+  "dependencies": {
+    "auth0": "^0.8.2",
+    "dotenv": "^1.2.0",
+    "request": "^2.61.0"
+  }
+}
