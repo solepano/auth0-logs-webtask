@@ -25,6 +25,7 @@
   "dependencies": {
     "auth0": "^0.8.2",
     "dotenv": "^1.2.0",
+    "nested-error-stacks": "^1.0.1",
     "request": "^2.61.0"
   }
 }
