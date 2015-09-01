@@ -45,8 +45,8 @@ Change require of auth0 module in logsWebtask.js from
 ```sh
 var Auth0 = require("auth0@0.8.2");
 ```
-```sh
 to
+```sh
 var Auth0 = require("auth0");
 ```
 
