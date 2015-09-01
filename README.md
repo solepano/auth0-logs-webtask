@@ -124,7 +124,7 @@ $ wt logs
 ```
 
 ## Check logs in Loggly
-![](logglyScreenshot.png)
+![](https://raw.githubusercontent.com/solepano/auth0-logs-webtask/master/logglyScreenshot.png)
 
 ## Next steps
 * Allow to pass 'lastLogId' and 'take' as query string params 
