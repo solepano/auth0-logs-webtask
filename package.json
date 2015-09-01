@@ -1,8 +1,8 @@
 {
   "name": "auth0-logs-webtask",
   "version": "1.0.0",
-  "description": "Webtask script for pulling logs from Auth0 API and pushing them to 3rd party logging API.",
-  "main": "app.js",
+  "description": "Webtask script for pulling logs from Auth0 API and pushing them Loggly.",
+  "main": "logsWebtask.js",
   "scripts": {
     "test": "mocha tests"
   },
