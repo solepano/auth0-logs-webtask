@@ -9,6 +9,10 @@ var NestedError = require('nested-error-stacks');
 var auth0Api;
 var logglyClient;
 
+//default number of logs to fetch at a time from auth0 API to bulk insert in Loggly
+var DEFAULT_TAKE = 50;
+var MAX_TAKE = 200;
+
 module.exports = function(context, cb) {
 
 	console.log("[logsWebtask] Checking context params...");
@@ -26,6 +30,13 @@ module.exports = function(context, cb) {
     	} 
     }
     
+    //Get optional query string params
+    var lastLogId = context.data.checkpointId;
+    var take = context.data.take? parseInt(context.data.take): DEFAULT_TAKE;
+    if (isNaN(take) || take < 0 || take > MAX_TAKE){
+    	return cb (new Error("The 'take' parameter must be an integer between 0 and 200, but "+context.data.take+" was received instead."));
+    }
+
     //Initialize Clients
 	if (!auth0Api){
 		initAuth0Api();
@@ -34,8 +45,7 @@ module.exports = function(context, cb) {
 	if (!logglyClient){
 		initLogglyClient();
 	}
-	//Get last fetched log id from last successful run
-	var lastLogId;
+	//Get last fetched log id from last successful run	
 	if (context.body && context.body.results && context.body.results.length > 0){
 		console.log("[logsWebtask] context.body.results",JSON.stringify(context.body.results));
 		for (var i = 0; i < context.body.results.length; i++) { 
@@ -53,7 +63,7 @@ module.exports = function(context, cb) {
 	//Get Auth0 Logs
 	var logsOpts = {
 		from: lastLogId,
-		take: 50
+		take: take
 	};
 	console.log("Fetching logs from Auth0",logsOpts);
     auth0Api.getLogs(logsOpts,function(err,result){
