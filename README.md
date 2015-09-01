@@ -41,6 +41,14 @@ Install dependencies
 ```sh
 $ npm install
 ```
+Change require of auth0 module in logsWebtask.js from
+```sh
+var Auth0 = require("auth0@0.8.2");
+```
+```sh
+to
+var Auth0 = require("auth0");
+```
 
 You can run tests with mocha:
 
@@ -54,11 +62,21 @@ $ node index
 ```
 
 ## Deploy as a webtasks with secrets
+
 You first need to setup the [webtask-cli wt](https://webtask.io/cli):
 
 ```sh
 $ npm i -g wt-cli
 $ wt init
+```
+
+Don't forget to change back require of auth0 module in logsWebtask.js from
+```sh
+var Auth0 = require("auth0");
+```
+to
+```sh
+var Auth0 = require("auth0@0.8.2");
 ```
 
 After that, you can create the webtask from a local file:
