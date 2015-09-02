@@ -36,6 +36,7 @@ AUTH0_CLIENT_ID=yourAuth0ClientId
 AUTH0_CLIENT_SECRET=yourAuth0ClientSecret
 LOGGLY_TOKEN=yourLogglyToken
 ```
+
 Install dependencies 
 
 ```sh
@@ -43,22 +44,26 @@ $ npm install
 ```
 Change require of auth0 module in logsWebtask.js from
 ```sh
-var Auth0 = require("auth0@0.8.2");
+const Auth0 = require("auth0@0.8.2");
 ```
 to
 ```sh
-var Auth0 = require("auth0");
+const Auth0 = require("auth0");
 ```
 
-You can run tests with mocha:
+You will need [Babel](https://babeljs.io/) installed
+
+$ npm install --global babel
+
+You can run mocha tests with:
 
 ```sh
-$ mocha test
+$ npm test
 ```
 Or execute locally running
 
 ```sh
-$ node index
+$ babel-node index
 ```
 
 ## Deploy as a webtasks with secrets
@@ -72,11 +77,11 @@ $ wt init
 
 Don't forget to change back require of auth0 module in logsWebtask.js from
 ```sh
-var Auth0 = require("auth0");
+const Auth0 = require("auth0");
 ```
 to
 ```sh
-var Auth0 = require("auth0@0.8.2");
+const Auth0 = require("auth0@0.8.2");
 ```
 
 After that, you can create the webtask from a local file:
@@ -145,5 +150,6 @@ $ wt logs
 ![](https://raw.githubusercontent.com/solepano/auth0-logs-webtask/master/logglyScreenshot.png)
 
 ## Next steps
-* Allow to pass 'lastLogId' and 'take' as query string params 
+* Test passing 'checkpointId' and 'take' as query string params 
 * Secure webtask run endpoint
+* Add vaquire to versioned require of auth0 lib

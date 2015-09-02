@@ -2,9 +2,9 @@
   "name": "auth0-logs-webtask",
   "version": "1.0.0",
   "description": "Webtask script for pulling logs from Auth0 API and pushing them Loggly.",
-  "main": "logsWebtask.js",
+  "main": "index.js",
   "scripts": {
-    "test": "mocha tests"
+    "test": "mocha --compilers js:babel/register"
   },
   "repository": {
     "type": "git",
@@ -27,5 +27,10 @@
     "dotenv": "^1.2.0",
     "nested-error-stacks": "^1.0.1",
     "request": "^2.61.0"
+  },
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "chai": "^3.2.0",
+    "chai-as-promised": "^5.1.0"
   }
 }

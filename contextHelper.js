@@ -8,11 +8,11 @@ var required_params = [
 ];
 
 module.exports.getContextFromDotEnv = function(){
-    var context = { 
-    	data: {} 
-    };
-    required_params.forEach(function (p) {
-        context.data[p] = process.env[p];
-    });
-    return context;
+  var context = { 
+  	data: {} 
+  };
+  required_params.forEach(function (p) {
+      context.data[p] = process.env[p];
+  });
+  return context;
 }
